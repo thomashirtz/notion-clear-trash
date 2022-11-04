@@ -2,6 +2,7 @@ from typing import Dict
 from typing import Iterator
 from typing import List
 from typing import TypeVar
+import argparse
 
 from notion.client import NotionClient
 
@@ -92,9 +93,24 @@ def chunk_iterator(lst: List[T], chunk_size: int) -> Iterator[List[T]]:
         yield lst[i:i + chunk_size]
 
 
-def main() -> int:  # todo docstring
+def main() -> int:
+    """Main script to perform the deletion of the notion's trash pages.
+    It will check all the workspace for trashed pages, then delete them
+    in chunks.
+
+    Returns:
+        Exit code.
+    """
     # Parsing arguments
-    token = input('Please enter your auth token: ')  # todo argparse
+    parser = argparse.ArgumentParser(
+        description='notion-clear-trash',
+        usage='Use "notion-clear-trash --help" or "ns --help" for more information',
+    )
+    parser.add_argument(
+        'token', type=str, metavar='',
+        help=f"Notion's `token_v2`.",
+    )
+    token = parser.parse_args().token
 
     # Get the client and the spaces
     client = NotionClient(token_v2=token)
