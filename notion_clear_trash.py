@@ -14,17 +14,35 @@ T = TypeVar('T')
 # todo readme
 # todo pre-commit
 # todo post on reddit
+# todo add TQDM
 
 
-# todo docstring
 def get_space_dict(client: NotionClient) -> Dict[str, str]:
+    """Function that returns a mapping from `space_id` to `space_name` using
+    a Notion client.
+
+    Args:
+        client: Notion client.
+
+    Returns:
+        Mapping `space_id` to `space_name`.
+    """
     response = client.post(endpoint='loadUserContent', data={}).json()
     space_list = response['recordMap']['space']
     return {id_: dct['value']['name'] for id_, dct in space_list.items()}
 
 
-# todo docstring
 def get_trashed_block_id_list(client: NotionClient, space_id: str) -> List[str]:
+    """Function that retrieve a list of `block_id` in the trash of a specific
+    `space_id` using a Notion Client.
+
+    Args:
+        client: Notion client.
+        space_id: Space id.
+
+    Returns:
+        List of block_id that are in the trash.
+    """
     query = {
         'type': 'BlocksInSpace',
         'query': '',
