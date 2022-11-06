@@ -1,8 +1,8 @@
+import argparse
 from typing import Dict
 from typing import Iterator
 from typing import List
 from typing import TypeVar
-import argparse
 
 from notion.client import NotionClient
 
@@ -10,12 +10,8 @@ T = TypeVar('T')
 
 
 # todo GitHub descriptions, ...
-# todo requirements
-# todo setup
 # todo readme
-# todo pre-commit
 # todo post on reddit
-# todo add TQDM
 
 
 def get_space_dict(client: NotionClient) -> Dict[str, str]:
@@ -74,6 +70,10 @@ def delete_permanently(
         block_id_list: List[str],
         chunk_size=10,
 ) -> None:
+    if not block_id_list:
+        print('\t No pages found.')
+        return
+
     for block_id_batch in chunk_iterator(block_id_list, chunk_size=chunk_size):
         try:
             query = {
