@@ -70,6 +70,13 @@ def delete_permanently(
         block_id_list: List[str],
         chunk_size=10,
 ) -> None:
+    """Delete permanently the pages `block_id_list` using the notion `client`
+
+    Args:
+        client: Notion client.
+        block_id_list: List of the page ids that will be deleted.
+        chunk_size: Size of the chunks that will be deleted.
+    """
     if not block_id_list:
         print('\t No pages found.')
         return
@@ -86,9 +93,16 @@ def delete_permanently(
             print(f"\tCouldn't delete: {block_id_batch} ({e})")
 
 
-# todo improve docstring
 def chunk_iterator(lst: List[T], chunk_size: int) -> Iterator[List[T]]:
-    """Yield successive n-sized chunks from lst."""
+    """Yield successive n-sized chunks from the list `lst`.
+
+    Args:
+        lst: The input list.
+        chunk_size: The chunk size
+
+    Returns:
+        Chunks of size n of the list `lst`
+    """
     for i in range(0, len(lst), chunk_size):
         yield lst[i:i + chunk_size]
 
