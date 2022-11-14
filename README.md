@@ -1,6 +1,6 @@
 # notion-clear-trash
 
-Script to clear the trash of all the workspace of your Notion account.
+Script to clear the trash of all the workspaces of your Notion account.
 
 This repository is strongly inspired from the project [notion-clear-trash](https://github.com/axyyu/notion-clear-trash) of the user [axyyu](https://github.com/axyyu). However, some modification has been done in order to delete the trash of all the workspaces instead of only the current workspace.
 
