@@ -9,11 +9,6 @@ from notion.client import NotionClient
 T = TypeVar('T')
 
 
-# todo GitHub descriptions, ...
-# todo readme
-# todo post on reddit
-
-
 def get_space_dict(client: NotionClient) -> Dict[str, str]:
     """Function that returns a mapping from `space_id` to `space_name` using
     a Notion client.
@@ -64,7 +59,6 @@ def get_trashed_block_id_list(client: NotionClient, space_id: str) -> List[str]:
     return [block_id['id'] for block_id in block_list]
 
 
-# todo docstring
 def delete_permanently(
         client: NotionClient,
         block_id_list: List[str],
@@ -129,6 +123,9 @@ def main() -> int:
     # Get the client and the spaces
     client = NotionClient(token_v2=token)
     space_dict = get_space_dict(client=client)
+
+    if input("Confirm wanting to run the script ? (yes/no)") != "yes":
+        exit()
 
     # Iterating through the spaces to delete the trashed pages
     for space_id, space_name in space_dict.items():
