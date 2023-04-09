@@ -18,8 +18,8 @@ pip install git+https://github.com/thomashirtz/notion-clear-trash#egg=notion-cle
 notion-clear-trash `token`
 ```
 
-The token is the API token, it can be found by:
- 1. going to [www.notion.so](https://www.notion.so).
- 2. Press `F12` to get to display the `Browser Developer Tools`.
+The token is the API token, the steps to get it are the following:
+ 1. Go to [www.notion.so](https://www.notion.so).
+ 2. Press* `F12` to get to display the `Browser Developer Tools`.
  3. Go to the `Storage` section, then the `Cookies` section, finally search for the value of `token_v2`.
     
