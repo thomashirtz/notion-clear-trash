@@ -48,8 +48,14 @@ def get_trashed_block_id_list(client: NotionClient, space_id: str) -> List[str]:
             'editedBy': [],
             'lastEditedTime': {},
             'createdTime': {},
+            'inTeams': [],
+            'includePublicPagesWithoutExplicitAccess': False,
+            'navigableBlockContentOnly': True
         },
-        'sort': 'Relevance',
+        'sort': {
+            'field': 'lastEdited',
+            'direction': 'desc'
+        },
         'limit': 1000,
         'spaceId': space_id,
         'source': 'trash',
